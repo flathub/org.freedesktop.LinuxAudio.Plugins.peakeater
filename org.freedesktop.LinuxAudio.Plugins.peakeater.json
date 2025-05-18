@@ -20,9 +20,12 @@
             "post-install": [
                 "install -d ${FLATPAK_DEST}/lv2",
                 "cp -r PeakEater_artefacts/LV2/PeakEater.lv2 ${FLATPAK_DEST}/lv2",
+                "strip ${FLATPAK_DEST}/lv2/*.lv2/*.so",
                 "install -d ${FLATPAK_DEST}/vst3",
                 "cp -r PeakEater_artefacts/VST3/PeakEater.vst3 ${FLATPAK_DEST}/vst3",
+                "strip ${FLATPAK_DEST}/vst3/*.vst3/Contents/*/*.so",
                 "install -Dm755 PeakEater_artefacts/CLAP/PeakEater.clap -t ${FLATPAK_DEST}/clap",
+                "strip ${FLATPAK_DEST}/clap/*.clap",
                 "install -Dm644 org.freedesktop.LinuxAudio.Plugins.peakeater.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo"
             ],
             "sources": [
