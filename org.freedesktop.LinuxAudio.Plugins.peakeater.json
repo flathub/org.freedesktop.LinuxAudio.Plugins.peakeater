@@ -2,9 +2,9 @@
     "id": "org.freedesktop.LinuxAudio.Plugins.peakeater",
     "runtime": "org.freedesktop.LinuxAudio.BaseExtension",
     "runtime-version": "stable",
-    "sdk": "org.freedesktop.Sdk//25.08",
+    "sdk": "org.freedesktop.Sdk//26.08",
     "build-extension": true,
-    "branch": "25.08",
+    "branch": "26.08",
     "build-options": {
         "prefix": "/app/extensions/Plugins/peakeater"
     },
@@ -32,6 +32,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/vvvar/PeakEater.git",
+                    "commit": "922b3530b34f83103486b74f09ba37e097b5e442",
                     "tag": "v0.6.2"
                 },
                 {
