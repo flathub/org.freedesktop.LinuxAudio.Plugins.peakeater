@@ -15,8 +15,37 @@
     ],
     "modules": [
         {
+            "name": "juce",
+            "buildsystem": "cmake-ninja",
+            "cleanup": [
+                "*"
+            ],
+            "config-opts": [
+                "-DJUCE_BUILD_EXTRAS=OFF",
+                "-DJUCE_BUILD_EXAMPLES=OFF",
+                "-DJUCE_ENABLE_MODULE_SOURCE_GROUPS=OFF",
+                "-DJUCE_COPY_PLUGIN_AFTER_BUILD=OFF"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/juce-framework/JUCE.git",
+                    "commit": "69795dc8e589a9eb5df251b6dd994859bf7b3fab",
+                    "tag": "7.0.5"
+                }
+            ]
+        },
+        {
             "name": "peakeater",
             "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_CXX_STANDARD=20",
+                "-DCMAKE_PROJECT_NAME=PeakEater",
+                "-DCMAKE_PROJECT_VERSION=0.8.2",
+                "-DCONAN_PROJECT_URL=https://github.com/vvvar/PeakEater",
+                "-DCONAN_PROJECT_COMPANY=T-Audio",
+                "-DFETCHCONTENT_FULLY_DISCONNECTED=ON"
+            ],
             "post-install": [
                 "install -d ${FLATPAK_DEST}/lv2",
                 "cp -r PeakEater_artefacts/LV2/PeakEater.lv2 ${FLATPAK_DEST}/lv2",
@@ -32,9 +61,15 @@
                 {
                     "type": "git",
                     "url": "https://github.com/vvvar/PeakEater.git",
-                    "commit": "922b3530b34f83103486b74f09ba37e097b5e442",
-                    "tag": "v0.6.2"
+                    "commit": "a99b8db4e67a125216634fdcab663050f7cc3add",
+                    "tag": "v0.8.2"
                 },
+		{
+		    "type": "git",
+		    "url": "https://github.com/free-audio/clap-juce-extensions.git",
+		    "commit": "b6cdda9f1fad06ba14e74e036f737d2ed11db2e7",
+		    "dest": "_deps/clap-juce-extensions-src"
+		},
                 {
                     "type": "file",
                     "path": "org.freedesktop.LinuxAudio.Plugins.peakeater.metainfo.xml"
